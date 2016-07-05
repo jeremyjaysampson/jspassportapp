@@ -38,15 +38,15 @@ module.exports = function(app, passport) {
 	// ===========JEREMY HOME===============
 	// show the home page with login form
 	app.get('/home', function(req, res) {
-
-		// render the page and pass in any flash data if it exists
 		res.render('home.ejs', { message: req.flash('loginMessage') });
 	});
 
+
+    
 	// process the login form
 	app.post('/home', passport.authenticate('local-login', {
             successRedirect : '/profile', // redirect to the secure profile section
-            failureRedirect : '/home', // redirect back to the signup page if there is an error
+            failureRedirect : '/', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
 		}),
         function(req, res) {
@@ -59,8 +59,6 @@ module.exports = function(app, passport) {
             }
         res.redirect('/home');
     });
-
-    
 	// =========END JEREMY HOME=============
     
     
@@ -96,7 +94,7 @@ module.exports = function(app, passport) {
 	// =====================================
 	app.get('/logout', function(req, res) {
 		req.logout();
-		res.redirect('/');
+		res.redirect('/home');
 	});
 };
 
@@ -108,5 +106,5 @@ function isLoggedIn(req, res, next) {
 		return next();
 
 	// if they aren't redirect them to the home page
-	res.redirect('/');
+	res.redirect('/home');
 }

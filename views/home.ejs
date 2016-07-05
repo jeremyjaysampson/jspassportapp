@@ -1,6 +1,5 @@
-
-
-<!DOCTYPE html>
+<!-- views/home.ejs -->
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -38,10 +37,13 @@
         <div id="navbar" class="navbar-collapse collapse">
           <form action="/home" method="post" class="navbar-form navbar-right">
             <div class="form-group">
-              <input type="text" placeholder="username" class="form-control">
+              <input type="text" placeholder="username" name="username" class="form-control">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
+              <input type="password" placeholder="Password" name="password" class="form-control">
+            </div>
+            <div class="form-group">
+              <label><input type="checkbox" style="color:white" name="remember" value="yes">Re</label>
             </div>
             <button type="submit" class="btn btn-success">Sign in</button>
           </form>
